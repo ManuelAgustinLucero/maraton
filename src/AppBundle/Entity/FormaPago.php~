@@ -1,0 +1,77 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * FormaPago
+ *
+ * @ORM\Table(name="forma_pago")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\FormaPagoRepository")
+ */
+class FormaPago
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="formapago", type="string", length=255)
+     */
+    private $formapago;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set formapago
+     *
+     * @param string $formapago
+     *
+     * @return FormaPago
+     */
+    public function setFormapago($formapago)
+    {
+        $this->formapago = $formapago;
+
+        return $this;
+    }
+
+    /**
+     * Get formapago
+     *
+     * @return string
+     */
+    public function getFormapago()
+    {
+        return $this->formapago;
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="Corredor", mappedBy="formapago")
+     */
+    private $corredores;
+
+    public function __construct()
+    {
+        $this->corredores = new ArrayCollection();
+    }
+}
+

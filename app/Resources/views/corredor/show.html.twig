@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Corredor</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ corredor.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ corredor.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellido</th>
+                <td>{{ corredor.apellido }}</td>
+            </tr>
+            <tr>
+                <th>Dni</th>
+                <td>{{ corredor.dni }}</td>
+            </tr>
+            <tr>
+                <th>Fechanacimiento</th>
+                <td>{% if corredor.fechaNacimiento %}{{ corredor.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ corredor.email }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ corredor.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Telemergencia</th>
+                <td>{{ corredor.telEmergencia }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('corredor_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('corredor_edit', { 'id': corredor.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

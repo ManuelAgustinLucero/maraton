@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Corredor list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dni</th>
+                <th>Fechanacimiento</th>
+                <th>Email</th>
+                <th>Telefono</th>
+                <th>Telemergencia</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for corredor in corredors %}
+            <tr>
+                <td><a href="{{ path('corredor_show', { 'id': corredor.id }) }}">{{ corredor.id }}</a></td>
+                <td>{{ corredor.nombre }}</td>
+                <td>{{ corredor.apellido }}</td>
+                <td>{{ corredor.dni }}</td>
+                <td>{% if corredor.fechaNacimiento %}{{ corredor.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ corredor.email }}</td>
+                <td>{{ corredor.telefono }}</td>
+                <td>{{ corredor.telEmergencia }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('corredor_show', { 'id': corredor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('corredor_edit', { 'id': corredor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('corredor_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
