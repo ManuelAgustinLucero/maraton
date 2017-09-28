@@ -138,4 +138,7 @@ class Provincia
     {
         return $this->ciudades;
     }
+    public function __toString(){
+        return (string) $this->nombre;
+    }
 }

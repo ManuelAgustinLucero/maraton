@@ -1,56 +1,113 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Corredor</h1>
+<div class="wrapper ">
+    <div class="content">
+        <div class="section section-features">
+            <div class="">
+                <div class="col-md-8 col-sm-offset-2">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ corredor.id }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ corredor.nombre }}</td>
-            </tr>
-            <tr>
-                <th>Apellido</th>
-                <td>{{ corredor.apellido }}</td>
-            </tr>
-            <tr>
-                <th>Dni</th>
-                <td>{{ corredor.dni }}</td>
-            </tr>
-            <tr>
-                <th>Fechanacimiento</th>
-                <td>{% if corredor.fechaNacimiento %}{{ corredor.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ corredor.email }}</td>
-            </tr>
-            <tr>
-                <th>Telefono</th>
-                <td>{{ corredor.telefono }}</td>
-            </tr>
-            <tr>
-                <th>Telemergencia</th>
-                <td>{{ corredor.telEmergencia }}</td>
-            </tr>
-        </tbody>
-    </table>
+                    <div class="card card-blue" >
+                        <div class="card-header" data-background-color="purple">
+                            <h6 class="title text-center">Concursantes</h6>
+                            <h6 class="category text-center"></h6>
+                        </div>
+                        <img class="" src="{{ asset('assets/img/inscription.png') }}" alt="">
+                        <br><br>
 
-    <ul>
-        <li>
-            <a href="{{ path('corredor_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('corredor_edit', { 'id': corredor.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                        <div class="card-content">
+                        <table class="table">
+                            <tbody>
+
+                                <tr>
+                                    <th>Nombre</th>
+                                    <td>{{ corredor.nombre }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Apellido</th>
+                                    <td>{{ corredor.apellido }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Dni</th>
+                                    <td>{{ corredor.dni }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Fechanacimiento</th>
+                                    <td>{% if corredor.fechaNacimiento %}{{ corredor.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>{{ corredor.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Telefono</th>
+                                    <td>{{ corredor.telefono }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Telemergencia</th>
+                                    <td>{{ corredor.telEmergencia }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Sexo</th>
+                                    <td>{{ corredor.sexo}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Pais</th>
+                                    <td>{{ corredor.pais}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Provincia</th>
+                                    <td>{{ corredor.ciudad.provincia.nombre}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Ciudad</th>
+                                    <td>{{ corredor.ciudad}}</td>
+                                </tr>
+                                <hr>
+                                <tr>
+                                    <th>Talle</th>
+                                    <td>{{ corredor.talle}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tipo de carrera</th>
+                                    <td>{{ corredor.tipocarrera}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Distancia</th>
+                                    <td>{{ corredor.distancia}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                            <br><br>
+                            <div class="row">
+                                {% if is_granted('ROLE_ADMIN') %}
+
+                                <div class="col-md-4">
+                                    <a class="btn btn-primary col-md-8 pull-left" href="{{ path('corredor_index') }}">Volver a la lista</a>
+
+                                </div>
+                                <div class="col-md-4">
+                                    {{ form_start(delete_form) }}
+                                    <input class="btn btn-danger col-md-6 col-sm-offset-3" type="submit" value="Delete">
+                                    {{ form_end(delete_form) }}
+
+                                </div>
+                                {% endif %}
+
+                                <div class="">
+                                    <a class="btn btn-primary col-md-3 pull-right " href="{{ path('corredor_edit', { 'id': corredor.id }) }}">Editar</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <br>
+    <br>
+
 {% endblock %}

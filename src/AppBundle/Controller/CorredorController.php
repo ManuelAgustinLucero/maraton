@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Corredor;
 use AppBundle\Form\CorredorType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Corredor controller.
@@ -136,5 +137,58 @@ class CorredorController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    /**
+     * Displays a form to edit an existing Students entity.
+     *
+     * @Route("/option", name="seleccion_provincia")
+     * @Method({"GET", "POST"})
+     */
+    public function selectprovincia(Request $request)
+    {
+
+        $provincia = $request->request->get('option');
+        $em = $this->getDoctrine()->getManager();
+
+        $db = $em->getConnection();
+        // $localidades=$em->getRepository('AppBundle:Localidad')->findByprovincia($provincia);
+
+        $repository = $em->getRepository("AppBundle:Ciudad");
+
+        $query = $repository->createQueryBuilder('p')
+            ->select(array(
+                    'p.id',
+                    'p.nombre',
+
+                )
+            )
+            ->where('p.provincia = :idprovincia')
+            ->orderBy('p.nombre ', 'ASC')
+            ->setParameter(':idprovincia',$provincia)
+            ->setMaxResults(10000)
+        ;
+        $ciudad=$query->getQuery()->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
+
+
+//
+//        $query ="SELECT id,nombre FROM ciudad WHERE provincia_id='$provincia' ORDER BY nombre ASC ";
+//        $stmt = $db->prepare($query);
+//        $params = array();
+//        $stmt->execute($params);
+//        $localidades=$stmt->fetchAll();
+//
+//
+//        foreach ($localidades as $nombreslocalidades){
+//            $result[]=$nombreslocalidades;
+//
+//
+//
+//        }
+
+
+
+        return new JsonResponse($ciudad);
+
+
     }
 }

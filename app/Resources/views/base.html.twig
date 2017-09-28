@@ -5,9 +5,32 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <link href="{{ asset('assets/css/bootstrap.css') }}"  rel="stylesheet" />
+        <link href="{{ asset('assets/css/landing-page.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('assets/css/mystyle.css') }}"  rel="stylesheet" />
+        <link href="{{ asset('assets/css/ct-navbar.css') }}"  rel="stylesheet" />
+
+        <!--     Fonts and icons     -->
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300' rel='stylesheet' type='text/css'>
+        <link href="{{ asset('assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <body class="landing-page landing-page1">
+        {% include 'nav/nav.html.twig' %}
+        {% block body %}
+        {% endblock %}
+        {% include 'footer/footer.html.twig' %}
+
+        {% block javascripts %}
+            <script src="{{ asset('assets/js/jquery-1.10.2.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery-ui-1.10.4.custom.min.js') }}"></script>
+            <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+            <script src="{{ asset('assets/js/awesome-landing-page.js') }}"></script>
+            <script src="{{ asset('assets/js/ct-navbar.js') }}"></script>
+
+
+        {% endblock %}
     </body>
 </html>

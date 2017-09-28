@@ -1,0 +1,72 @@
+<nav class="navbar navbar-ct-azzure navbar-fixed-top navbar-white" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar bar1"></span>
+                <span class="icon-bar bar2"></span>
+                <span class="icon-bar bar3"></span>
+            </button>
+            <a href="{{ path('homepage') }}">
+                <div class="logo-container">
+                    <div class="logo">
+                        <img src="{{ asset('assets/img/logos/Atletismo.png') }}" alt="Creative Tim Logo">
+                    </div>
+                    <div class="brand">
+                        Maraton
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="example" >
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="https://www.facebook.com/events/160457521173371/">
+                        <i class="fa fa-facebook-square"></i>
+                        Facebook
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ path('informacion') }}">
+                        Info
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('corredor_new') }}">
+                        Inscripcion
+                    </a>
+                </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a href="{{ path('corredor_index') }}">
+                            Administracion
+                        </a>
+                    </li>
+                {% endif %}
+                {#<li>#}
+                    {#<a href="{{ path('fos_user_security_login') }}">#}
+                        {#<i class="fa fa-user"></i>#}
+                        {#login#}
+                    {#</a>#}
+                {#</li>#}
+                <li>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                    {% else %}
+
+                        <a href="{{ path('fos_user_security_login') }}">
+                            <i class="fa fa-user"></i>
+                            {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                    {% endif %}
+                </li>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</nav>
