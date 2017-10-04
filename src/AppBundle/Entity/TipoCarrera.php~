@@ -108,4 +108,9 @@ class TipoCarrera
     {
         return $this->corredores;
     }
+
+
+    public function __toString(){
+        return (string) $this->nombre;
+    }
 }

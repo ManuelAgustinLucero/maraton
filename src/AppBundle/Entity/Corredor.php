@@ -70,6 +70,12 @@ class Corredor
      */
     private $telEmergencia;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="range_date", type="string", length=255)
+     */
+    private $rangedate;
 
     /**
      * Get id
@@ -458,5 +464,29 @@ class Corredor
     public function getFormapago()
     {
         return $this->formapago;
+    }
+
+    /**
+     * Set rangedate
+     *
+     * @param string $rangedate
+     *
+     * @return Corredor
+     */
+    public function setRangedate($rangedate)
+    {
+        $this->rangedate = $rangedate;
+
+        return $this;
+    }
+
+    /**
+     * Get rangedate
+     *
+     * @return string
+     */
+    public function getRangedate()
+    {
+        return $this->rangedate;
     }
 }

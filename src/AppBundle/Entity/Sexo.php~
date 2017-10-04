@@ -108,4 +108,7 @@ class Sexo
     {
         return $this->corredores;
     }
+    public function __toString(){
+        return (string) $this->sexo;
+    }
 }

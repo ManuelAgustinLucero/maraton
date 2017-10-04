@@ -1,6 +1,7 @@
 body{
     
 }
+
 .form-control::-moz-placeholder{
    color: #DDDDDD;
    opacity: 1;

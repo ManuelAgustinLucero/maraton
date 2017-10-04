@@ -143,4 +143,7 @@ class Paises
         return $this->provincias;
     }
 
+    public function __toString(){
+        return (string) $this->nombre;
+    }
 }

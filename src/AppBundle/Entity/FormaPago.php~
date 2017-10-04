@@ -73,5 +73,42 @@ class FormaPago
     {
         $this->corredores = new ArrayCollection();
     }
-}
 
+    /**
+     * Add corredore
+     *
+     * @param \AppBundle\Entity\Corredor $corredore
+     *
+     * @return FormaPago
+     */
+    public function addCorredore(\AppBundle\Entity\Corredor $corredore)
+    {
+        $this->corredores[] = $corredore;
+
+        return $this;
+    }
+
+    /**
+     * Remove corredore
+     *
+     * @param \AppBundle\Entity\Corredor $corredore
+     */
+    public function removeCorredore(\AppBundle\Entity\Corredor $corredore)
+    {
+        $this->corredores->removeElement($corredore);
+    }
+
+    /**
+     * Get corredores
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCorredores()
+    {
+        return $this->corredores;
+    }
+
+    public function __toString(){
+        return (string) $this->formapago;
+    }
+}

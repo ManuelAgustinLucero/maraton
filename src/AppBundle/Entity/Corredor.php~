@@ -70,6 +70,12 @@ class Corredor
      */
     private $telEmergencia;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="range_date", type="string", length=255)
+     */
+    private $rangedate;
 
     /**
      * Get id
@@ -435,4 +441,28 @@ class Corredor
      * @ORM\JoinColumn(name="formapago_id", referencedColumnName="id")
      */
     private $formapago;
+
+    /**
+     * Set formapago
+     *
+     * @param \AppBundle\Entity\FormaPago $formapago
+     *
+     * @return Corredor
+     */
+    public function setFormapago(\AppBundle\Entity\FormaPago $formapago = null)
+    {
+        $this->formapago = $formapago;
+
+        return $this;
+    }
+
+    /**
+     * Get formapago
+     *
+     * @return \AppBundle\Entity\FormaPago
+     */
+    public function getFormapago()
+    {
+        return $this->formapago;
+    }
 }
