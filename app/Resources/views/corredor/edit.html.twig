@@ -1,5 +1,14 @@
-{% extends 'base.html.twig' %}
+{% block stylesheets %}
 
+    <link href="{{ asset('assets/css/bootstrap-datepicker.css') }}"  rel="stylesheet" />
+    <link href="{{ asset('assets/bootstrap3/css/bootstrap.css') }}"  rel="stylesheet" />
+    <link href="{{ asset('assets/bootstrap3/js/bootstrap.js') }}"  rel="stylesheet" />
+    <script src="{{ asset('assets/js/jquery-1.10.2.js') }}" ></script>
+    <link href="{{ asset('assets/css/ct-navbar.css') }}"  rel="stylesheet" />
+
+    <script src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script>
+
+{% endblock %}
 {% block body %}
 
     <div class="wrapper ">
@@ -13,21 +22,19 @@
                                 <h6 class="title text-center">Registro de maraton</h6>
                                 <h6 class="category text-center">Complete los campos obligatorios</h6>
                             </div>
-                            <img src="{{ asset('assets/img/inscription.png') }}" alt="">
-                            <br><br>
                             <br>
                             <hr>
                             <div class="card-content">
                                 {{ form_start(edit_form) }}
                                 <div class="row">
-                                    <div class="col-md-5">
+                                    <div class="col-md-4">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Nombre</label>
                                             {{ form_widget(edit_form.nombre, { 'attr': {'class':'form-control'}})}}
 
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Apellido</label>
                                             {{ form_widget(edit_form.apellido, { 'attr': {'class':'form-control'}})}}
@@ -41,16 +48,25 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group label-floating">
-                                            <label class="control-label">Fecha de nacimiento</label>
-                                            {{ form_widget(edit_form.fechaNacimiento, { 'attr': {'class':'datepicker'}})}}
+                                       <div class="col-md-4">
+                                        <div class="form-group label-floating text-center">
+                                            <label class="control-label">Fecha de nacimiento <span class="text-danger">*</span></label>
+                                            {{ form_widget(edit_form.fechaNacimiento, {attr: {
+                                                'class': "datepicker form-control" } ,
+                                            })
+                                            }}
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Email</label>
-                                            {{ form_widget(edit_form.email, { 'attr': {'class':'form-control'}})}}
+                                            <label class="control-label">Sexo</label>
+                                            {{ form_widget(edit_form.sexo, { 'attr': {'class':'form-control'}})}}
+                                        </div>
+                                    </div>
+                                       <div class="col-md-4">
+                                        <div class="form-group label-floating text-center">
+                                            <label class="control-label">Categoria edad <span class="text-danger">*</span></label>
+                                            {{ form_widget(edit_form.rangedate, { 'attr': {'class':'form-control text-center'}})}}
                                         </div>
                                     </div>
                                 </div>
@@ -123,13 +139,13 @@
                                             {{ form_widget(edit_form.talle, { 'attr': {'class':'form-control'}})}}
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Sexo</label>
-                                            {{ form_widget(edit_form.sexo, { 'attr': {'class':'form-control'}})}}
+                                            <label class="control-label">Email</label>
+                                            {{ form_widget(edit_form.email, { 'attr': {'class':'form-control'}})}}
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
@@ -209,44 +225,16 @@
     {#</ul>#}
 {% endblock %}
 {% block javascripts %}
-<script src="{{ asset('assets/js/jquery-1.10.2.js') }}" ></script>
 
 <script type="text/javascript">
-    var pais=$('#corredor_pais option:selected').val();
 
-    if (pais != 13){
-        $("#appbundle_cliente_provincia").hide();
-        $("#corredor_ciudad").hide();
+    $('.datepicker').datepicker({
 
-        $("#pro").hide();
-        $("#lo").hide();
-    }
-    else{
-        $("#appbundle_cliente_provincia").show();
-        $("#corredor_ciudad").show();
-        $("#pro").show();
-        $("#lo").show();
-    }
-    $(document).ready(function ( ) {
-        $('#corredor_pais').change(function () {
-            var pais=$('#corredor_pais option:selected').val();
+            format: 'dd/mm/yyyy',
+            viewMode: 'years',
+            minDate: 0
 
-            if (pais != 13){
-                $("#appbundle_cliente_provincia").hide();
-                $("#corredor_ciudad").hide();
-
-                $("#pro").hide();
-                $("#lo").hide();
-            }
-            else{
-                $("#appbundle_cliente_provincia").show();
-                $("#corredor_ciudad").show();
-                $("#pro").show();
-                $("#lo").show();
-            }
-        })
-    });
-
+        });
     $(document).ready(function ( ) {
         $('#appbundle_cliente_provincia').change(function () {
             var selectedoption=$('#appbundle_cliente_provincia option:selected').val();
@@ -263,12 +251,10 @@
 
                 html = "";
                 for(var key in obj) {
-                    console.log(obj[key].id);
                     html += "<option value=" + obj[key].id + ">" +obj[key].nombre + "</option>"
                 }
 
-
-                document.getElementById("corredor_ciudad").innerHTML = html;
+                document.getElementById("appbundle_corredor_ciudad").innerHTML = html;
             });
 
         })

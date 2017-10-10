@@ -12,8 +12,6 @@
                             <h6 class="title text-center">Concursantes</h6>
                             <h6 class="category text-center"></h6>
                         </div>
-                        <img class="" src="{{ asset('assets/img/inscription.png') }}" alt="">
-                        <br><br>
 
                         <div class="card-content">
                         <table class="table">
@@ -55,14 +53,21 @@
                                     <th>Pais</th>
                                     <td>{{ corredor.pais}}</td>
                                 </tr>
-                                <tr>
-                                    <th>Provincia</th>
-                                    <td>{{ corredor.ciudad.provincia.nombre}}</td>
-                                </tr>
+                                 {% if  (corredor.ciudad.provincia.nombre is defined) %}
+                                    <tr>
+                                        <th>Provincia</th>
+                                        
+                                        <td>{{ corredor.ciudad.provincia.nombre}}</td>
+                                    </tr>
+                                {%endif%}
+                                {% if  (corredor.ciudad is defined) %}
+
                                 <tr>
                                     <th>Ciudad</th>
                                     <td>{{ corredor.ciudad}}</td>
                                 </tr>
+                                 {%endif%}
+
                                 <hr>
                                 <tr>
                                     <th>Talle</th>

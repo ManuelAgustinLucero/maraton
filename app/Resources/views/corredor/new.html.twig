@@ -183,13 +183,21 @@
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Forma de pago<span class="text-danger">*</span></label>
-                                            {{ form_widget(form.formapago, { 'attr': {'class':'form-control', onchange:'calle()'}})}}
+                                            {{ form_widget(form.formapago, { 'attr': {'class':'form-control'}})}}
                                         </div>
                                     </div>
                                 </div>
                             <br>
                             <br>
-                            <input  class="btn btn-success col-md-6 col-sm-6 col-sm-offset-3 pull-right" type="submit" value="Registrar" />
+                            <div class="row">
+                                    <div class="col-md-6">
+                                        <a  class="btn btn-primary col-md-6 pull-left"href="{{ path('homepage') }}">Volver al menu</a>
+
+                                    </div>
+                                <input  class="btn btn-success col-md-4 pull-right" type="submit" value="Registrar" />
+
+                            </div>
+                          
 
                                 <div class="clearfix"></div>
                             {{ form_end(form) }}
@@ -252,9 +260,7 @@
                     for(var key in obj) {
                         html += "<option value=" + obj[key].id + ">" +obj[key].nombre + "</option>"
                     }
-
-
-                    document.getElementById("corredor_ciudad").innerHTML = html;
+                    document.getElementById("appbundle_corredor_ciudad").innerHTML = html;
                 });
 
             })

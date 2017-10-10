@@ -27,7 +27,6 @@
                                 <h3 class="title text-center">Concursantes</h3>
                                 <h6 class="category text-center"></h6>
                             </div>
-                            <img class="" src="{{ asset('assets/img/inscription.png') }}" alt="">
                             <br><br>
 
                             <div class="card-content table-responsive ">
@@ -38,9 +37,11 @@
                                             <th>Nombre</th>
                                             <th>Apellido</th>
                                             <th>Email</th>
-                                            <th>Telefono</th>
                                             <th>Ciudad</th>
-                                            <th>Actions</th>
+                                            
+                                            <th>Categoria</th>
+
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -50,7 +51,15 @@
                                             <td>{{ corredor.nombre }}</td>
                                             <td>{{ corredor.apellido }}</td>
                                             <td>{{ corredor.email }}</td>
-                                            <td>{{ corredor.telefono }}</td>
+                                            <td>
+                                                {% if  (corredor.ciudad.provincia.nombre is defined) %}
+                                                    {{ corredor.ciudad }}
+                                                {% else %}
+                                                    {{corredor.pais}}
+                                                {% endif %}
+
+                                            </td>
+                                            <td>{{ corredor.rangedate }}</td>
 
                                             <td>
 
