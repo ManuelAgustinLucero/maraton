@@ -19,7 +19,7 @@
 
                         <div class="card card-blue" >
                             <div class="card-header" data-background-color="purple">
-                                <h6 class="title text-center">Registro de maraton</h6>
+                                <h6 class="title text-center">Registro de corredor</h6>
                                 <h6 class="category text-center">Complete los campos obligatorios</h6>
                             </div>
                             <br>
@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">DNI</label>
+                                            <label class="control-label">D.N.I.</label>
                                             {{ form_widget(edit_form.dni, { 'attr': {'class':'form-control'}})}}
                                         </div>
                                     </div>
@@ -73,13 +73,13 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Telefono</label>
+                                            <label class="control-label">Teléfono</label>
                                             {{ form_widget(edit_form.telefono, { 'attr': {'class':'form-control', }})}}
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Telefono de emergencia </label>
+                                            <label class="control-label">Teléfono de emergencia </label>
                                             {{ form_widget(edit_form.telEmergencia, { 'attr': {'class':'form-control'}})}}
                                         </div>
                                     </div>
@@ -87,16 +87,16 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Pais</label>
+                                            <label class="control-label">País</label>
                                             {{ form_widget(edit_form.pais, { 'attr': {'class':'form-control'}})}}
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
                                             <label id="pro" class="control-label">Provincia</label>
-                                            <select name="provincia" id="appbundle_cliente_provincia" class="form-control">
+                                            <select name="provincia" id="appbundle_corredor_provincia" class="form-control">
                                                 <option value></option>
-                                                <option value="6">Cordoba</option>
+                                                <option value="6">Córdoba</option>
                                                 <option value="2">Capital Federal</option>
                                                 <option value="3">Catamarca</option>
                                                 <option value="4">Chaco</option>
@@ -150,7 +150,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Tipo de carrera</label>
+                                            <label class="control-label">¿Posee alguna discapacidad?</label>
                                             {{ form_widget(edit_form.tipocarrera, { 'attr': {'class':'form-control'}})}}
                                         </div>
                                     </div>
@@ -203,26 +203,6 @@
 
 
 
-
-    {#{{ form_start(edit_form) }}#}
-        {#{{ form_widget(edit_form) }}#}
-        {#<input type="submit" value="Edit" />#}
-    {#{{ form_end(edit_form) }}#}
-
-    {##}
-
-
-
-    {#<ul>#}
-        {#<li>#}
-            {#<a href="{{ path('corredor_index') }}">Back to the list</a>#}
-        {#</li>#}
-        {#<li>#}
-            {#{{ form_start(delete_form) }}#}
-                {#<input type="submit" value="Delete">#}
-            {#{{ form_end(delete_form) }}#}
-        {#</li>#}
-    {#</ul>#}
 {% endblock %}
 {% block javascripts %}
 
@@ -234,10 +214,34 @@
             viewMode: 'years',
             minDate: 0
 
-        });
+    });
+
+
     $(document).ready(function ( ) {
-        $('#appbundle_cliente_provincia').change(function () {
-            var selectedoption=$('#appbundle_cliente_provincia option:selected').val();
+        if (pais != 13){
+            document.getElementById('appbundle_corredor_provincia').disabled=true;
+            document.getElementById('appbundle_corredor_ciudad').disabled=true;
+        }
+        else{
+            document.getElementById('appbundle_corredor_provincia').disabled=false;
+        }
+
+        $('#appbundle_corredor_pais').change(function () {
+            var pais=$('#appbundle_corredor_pais option:selected').val();
+
+            if (pais != 13){
+                document.getElementById('appbundle_corredor_provincia').disabled=true;
+                document.getElementById('appbundle_corredor_ciudad').disabled=true;
+            }
+            else{
+                document.getElementById('appbundle_corredor_provincia').disabled=false;
+            }
+        })
+    });
+
+    $(document).ready(function ( ) {
+        $('#appbundle_corredor_provincia').change(function () {
+            var selectedoption=$('#appbundle_corredor_provincia option:selected').val();
             console.log(selectedoption);
             $.ajax({
                 type: "POST",
@@ -253,7 +257,7 @@
                 for(var key in obj) {
                     html += "<option value=" + obj[key].id + ">" +obj[key].nombre + "</option>"
                 }
-
+                document.getElementById('appbundle_corredor_ciudad').disabled=false;
                 document.getElementById("appbundle_corredor_ciudad").innerHTML = html;
             });
 

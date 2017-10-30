@@ -111,9 +111,9 @@
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
                                             <label id="pro" class="control-label">Provincia <span class="text-danger">*</span></label>
-                                            <select name="provincia" id="appbundle_cliente_provincia" class="form-control">
+                                            <select name="provincia" id="appbundle_corredor_provincia" class="form-control">
                                                 <option value></option>
-                                                <option value="6">Cordoba</option>
+                                                <option value="6">Córdoba</option>
                                                 <option value="2">Capital Federal</option>
                                                 <option value="3">Catamarca</option>
                                                 <option value="4">Chaco</option>
@@ -169,7 +169,7 @@
                                 <div class="row text-center">
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Posee alguna discapacidad? <span class="text-danger">*</span></label>
+                                            <label class="control-label">¿Posee alguna discapacidad? <span class="text-danger">*</span></label>
                                             {{ form_widget(form.tipocarrera, { 'attr': {'class':'form-control'}})}}
                                         </div>
                                     </div>
@@ -223,28 +223,29 @@
 
 
         $(document).ready(function ( ) {
-            $('#corredor_pais').change(function () {
-                var pais=$('#corredor_pais option:selected').val();
+            document.getElementById('appbundle_corredor_provincia').disabled=true;
+            document.getElementById('appbundle_corredor_ciudad').disabled=true;
+
+            $('#appbundle_corredor_pais').change(function () {
+                var pais=$('#appbundle_corredor_pais option:selected').val();
 
                 if (pais != 13){
-                    $("#appbundle_cliente_provincia").hide();
-                    $("#corredor_ciudad").hide();
+                    document.getElementById('appbundle_corredor_provincia').disabled=true;
+                    document.getElementById('appbundle_corredor_ciudad').disabled=true;
 
-                    $("#pro").hide();
-                    $("#lo").hide();
+
                 }
                 else{
-                    $("#appbundle_cliente_provincia").show();
-                    $("#corredor_ciudad").show();
-                    $("#pro").show();
-                    $("#lo").show();
+                    document.getElementById('appbundle_corredor_provincia').disabled=false;
+
+
                 }
             })
         });
 
         $(document).ready(function ( ) {
-            $('#appbundle_cliente_provincia').change(function () {
-                var selectedoption=$('#appbundle_cliente_provincia option:selected').val();
+            $('#appbundle_corredor_provincia').change(function () {
+                var selectedoption=$('#appbundle_corredor_provincia option:selected').val();
                 console.log(selectedoption);
                 $.ajax({
                     type: "POST",
@@ -260,6 +261,7 @@
                     for(var key in obj) {
                         html += "<option value=" + obj[key].id + ">" +obj[key].nombre + "</option>"
                     }
+                    document.getElementById('appbundle_corredor_ciudad').disabled=false;
                     document.getElementById("appbundle_corredor_ciudad").innerHTML = html;
                 });
 

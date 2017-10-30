@@ -8,13 +8,16 @@
                 <div class="col-md-8 col-sm-offset-2">
 
                     <div class="card card-blue" >
-                        <div class="card-header" data-background-color="purple">
-                            <h6 class="title text-center">Concursantes</h6>
-                            <h6 class="category text-center"></h6>
+                        <div class="card-header" data-background-color="purple" id="hola2">
+                            <h5 class="title text-center">Corredor</h5>
+
                         </div>
 
                         <div class="card-content">
+                        <div id="hola">
                         <table class="table">
+                            <h6 class="category text-center">Comprobante para el corredor</h6>
+
                             <tbody>
 
                                 <tr>
@@ -26,11 +29,11 @@
                                     <td>{{ corredor.apellido }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Dni</th>
+                                    <th>D.N.I.</th>
                                     <td>{{ corredor.dni }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Fechanacimiento</th>
+                                    <th>Fecha de nacimiento</th>
                                     <td>{% if corredor.fechaNacimiento %}{{ corredor.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
                                 </tr>
                                 <tr>
@@ -38,11 +41,11 @@
                                     <td>{{ corredor.email }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Telefono</th>
+                                    <th>Teléfono</th>
                                     <td>{{ corredor.telefono }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Telemergencia</th>
+                                    <th>Teléfono de emergencia</th>
                                     <td>{{ corredor.telEmergencia }}</td>
                                 </tr>
                                 <tr>
@@ -50,7 +53,7 @@
                                     <td>{{ corredor.sexo}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Pais</th>
+                                    <th>País</th>
                                     <td>{{ corredor.pais}}</td>
                                 </tr>
                                  {% if  (corredor.ciudad.provincia.nombre is defined) %}
@@ -83,7 +86,7 @@
                                 </tr>
                             </tbody>
                         </table>
-
+                        </div>
                             <br><br>
                             <div class="row">
                                 {% if is_granted('ROLE_ADMIN') %}
@@ -102,7 +105,10 @@
 
                                 <div class="">
                                     <a class="btn btn-primary col-md-3 pull-right " href="{{ path('corredor_edit', { 'id': corredor.id }) }}">Editar</a>
-
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <a class="btn btn-success col-md-3 pull-right " onclick="imprSelec('hola')">Imprimir</a>
                                 </div>
                             </div>
                         </div>
@@ -115,4 +121,16 @@
     <br>
     <br>
 
+{% endblock %}
+{% block javascripts %}
+    <script>
+        function imprSelec(nombre) {
+            var ficha = document.getElementById(nombre);
+            var ventimp = window.open(' ', 'popimpr');
+            ventimp.document.write(ficha.innerHTML );
+            ventimp.document.close();
+            ventimp.print( );
+            ventimp.close();
+        }
+    </script>
 {% endblock %}

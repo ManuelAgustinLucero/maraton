@@ -26,4 +26,12 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('default/info.html.twig');
     }
+
+    /**
+     * @Route("/recorrido", name="recorrido")
+     */
+    public function recorridoAction(Request $request)
+    {
+        return $this->render('default/recorrido.html.twig');
+    }
 }
