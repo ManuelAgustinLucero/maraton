@@ -62,7 +62,12 @@ class CorredorType extends AbstractType
             ->add('talle')
             ->add('sexo')
             ->add('distancia')
-            ->add('tipocarrera')
+            ->add('tipocarrera',ChoiceType::class, array(
+                'choices' => array(
+                    'No'=>1,
+                    'Si'=>2)
+                )
+            )
             ->add('formapago');
     }
     
