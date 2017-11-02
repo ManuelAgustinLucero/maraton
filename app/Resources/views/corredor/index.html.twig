@@ -32,7 +32,8 @@
                                             <th>Apellido</th>
                                             <th>Sexo</th>
                                             <th>Ciudad</th>
-                                            <th>Categoria</th>
+                                            <th>Categoría</th>
+                                            <th>Distancia</th>
                                             <th>Discapacidad</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -58,6 +59,7 @@
 
                                             </td>
                                             <td>{{ corredor.rangedate }}</td>
+                                            <td>{{ corredor.distancia }} Km</td>
                                             <td>{{ corredor.tipocarrera }}</td>
 
                                             <td>
@@ -137,28 +139,28 @@
                             extend: 'csvHtml5',
                             title: 'Corredores',
                             exportOptions: {
-                                columns: [  0, 1, 2,3,4, 5 ]
+                                columns: [  0, 1, 2,3,4, 5,6 ]
                             }
                         },
                         {
                             extend: 'excelHtml5',
                             title: 'Corredores',
                             exportOptions: {
-                                columns: [  0,1, 2,3,4, 5 ]
+                                columns: [  0,1, 2,3,4, 5,6 ]
                             }
                         },
                         {
                             extend: 'pdfHtml5',
                             title: 'Corredores',
                             exportOptions: {
-                                columns: [ 0, 1, 2,3,4, 5 ]
+                                columns: [ 0, 1, 2,3,4, 5 ,6]
                             }
                         },
                         {
                             extend: 'print',
                             title: '',
                             exportOptions: {
-                                columns: [  0, 1, 2,3,4, 5 ]
+                                columns: [  0, 1, 2,3,4, 5 ,6]
                             }
                         }
 
