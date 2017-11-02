@@ -1389,8 +1389,8 @@ pre code {
   overflow-y: scroll;
 }
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
+  /*padding-right: 15px;*/
+  /*padding-left: 15px;*/
   margin-right: auto;
   margin-left: auto;
 }
@@ -1410,8 +1410,8 @@ pre code {
   }
 }
 .container-fluid {
-  padding-right: 15px;
-  padding-left: 15px;
+    /*padding-right: 15px;*/
+    /*padding-left: 15px;*/
   margin-right: auto;
   margin-left: auto;
 }
@@ -6357,3 +6357,9 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+div.container div.navbar-header{
+  float: left !important;
+  margin-left: 0px !important;
+
+}

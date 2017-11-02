@@ -20,10 +20,10 @@ body{
 }
 /*     General overwrite     */
 a{
-    color: #2C93FF;
+    color: black;
 }
 a:hover, a:focus {
-    color: #1084FF;
+    color: #3ABE41;
 }
 a:focus, a:active, 
 button::-moz-focus-inner,
@@ -278,8 +278,8 @@ h1 .subtitle{
     background-color: rgba(52, 172, 220, 0.98);
 }
 .navbar:not(.navbar-transparent).navbar-ct-azzure{
-    background-color: #5BCAFF;
-    background-color: rgba(91, 203, 255, 0.98);
+    background-color: #3ABE41;
+    /*background-color: rgba(91, 203, 255, 0.98);*/
 }
 .navbar:not(.navbar-transparent).navbar-ct-green{
     background-color: #4cd964;
@@ -501,3 +501,6 @@ h4{
 
 }
 
+div.icon i{
+    color:#3ABE41 !important;
+}

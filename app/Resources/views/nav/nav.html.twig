@@ -1,13 +1,6 @@
 <nav class="navbar navbar-ct-azzure navbar-fixed-top navbar-white" role="navigation">
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar bar1"></span>
-                <span class="icon-bar bar2"></span>
-                <span class="icon-bar bar3"></span>
-            </button>
             <a href="{{ path('homepage') }}">
                 <div class="logo-container">
                     <div class="logo">
@@ -43,6 +36,11 @@
                     <li>
                         <a href="{{ path('corredor_index') }}">
                             Administración
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_change_password') }}">
+                            Cambiar constraseña
                         </a>
                     </li>
                 {% endif %}
