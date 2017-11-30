@@ -43,11 +43,15 @@ class CorredorController extends Controller
     public function newAction(Request $request)
     {
         $corredor = new Corredor();
+        $em = $this->getDoctrine()->getManager();
+
         $form = $this->createForm('AppBundle\Form\CorredorType', $corredor);
+        $form->get('formapago')->setData($em->getReference('AppBundle:FormaPago', 1));
+        $form->get('tipocarrera')->setData($em->getReference('AppBundle:TipoCarrera', 1));
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($corredor);
             $em->flush();
 

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use function Couchbase\defaultDecoder;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -62,13 +63,10 @@ class CorredorType extends AbstractType
             ->add('talle')
             ->add('sexo')
             ->add('distancia')
-            ->add('tipocarrera',ChoiceType::class, array(
-                'choices' => array(
-                    'No'=>1,
-                    'Si'=>2)
-                )
-            )
+            ->add('tipocarrera')
             ->add('formapago');
+
+
     }
     
     /**
@@ -79,6 +77,7 @@ class CorredorType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Corredor'
         ));
+
     }
 
     /**
