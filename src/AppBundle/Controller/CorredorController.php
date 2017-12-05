@@ -97,7 +97,7 @@ class CorredorController extends Controller
             $em->persist($corredor);
             $em->flush();
 
-            return $this->redirectToRoute('corredor_edit', array('id' => $corredor->getId()));
+            return $this->redirectToRoute('corredor_show', array('id' => $corredor->getId()));
         }
 
         return $this->render('corredor/edit.html.twig', array(

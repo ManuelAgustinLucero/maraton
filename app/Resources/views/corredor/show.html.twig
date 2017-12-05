@@ -15,13 +15,13 @@
 
                         <div class="card-content">
                         <div id="hola">
-                        <table class="table">
+                        <table class="table text-left">
                             <h6 class="category text-center">Comprobante para el corredor</h6>
 
                             <tbody>
 
                                 <tr>
-                                    <th>Nombre</th>
+                                    <th class="text-left">Nombre</th>
                                     <td>{{ corredor.nombre }}</td>
                                 </tr>
                                 <tr>
@@ -34,7 +34,7 @@
                                 </tr>
                                 <tr>
                                     <th>Fecha de nacimiento</th>
-                                    <td>{% if corredor.fechaNacimiento %}{{ corredor.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+                                    <td>{% if corredor.fechaNacimiento %}{{ corredor.fechaNacimiento|date('d-m-Y') }}{% endif %}</td>
                                 </tr>
                                 <tr>
                                     <th>Email</th>
@@ -77,15 +77,47 @@
                                     <td>{{ corredor.talle}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Tipo de carrera</th>
+                                    <th>Discapacidad</th>
                                     <td>{{ corredor.tipocarrera}}</td>
                                 </tr>
                                 <tr>
                                     <th>Distancia</th>
-                                    <td>{{ corredor.distancia}}</td>
+                                    <td>{{ corredor.distancia}} Km</td>
+                                </tr>
+                                <tr>
+                                    <th>Forma de Pago</th>
+                                    <td>{{ corredor.formapago}}</td>
                                 </tr>
                             </tbody>
                         </table>
+                            <hr>
+                        <p>
+                            {% if (corredor.formapago == 'Cuenta Corriente') %}
+                                <h4>En CES</h4>
+                                <br>
+                                Gral Paz 767, Río Cuarto, Córdoba
+                                <br>
+                                Número de Cuenta: <strong>559</strong>
+                            {% endif %}
+                            {% if (corredor.formapago == 'Depósito Bancario') %}
+                                <h4>En Banco Macro</h4>
+                                <br>
+                                Cuenta corriente en pesos
+                                <br>
+                                Número de Cuenta: <strong>382109415914272</strong>
+                                <br>
+                                CBU Nº: <strong>2850821230094159142721</strong>
+                            {% endif %}
+                            {% if (corredor.distancia == '5') %}
+                                <br>
+                                Monto a pagar $400
+                            {% endif %}
+                            {% if (corredor.distancia == '10') %}
+                                <br>
+                                Monto a pagar $500
+                            {% endif %}
+
+                            </p>
                         </div>
                             <br><br>
                             <div class="row">

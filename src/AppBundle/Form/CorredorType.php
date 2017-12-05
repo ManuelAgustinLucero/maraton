@@ -23,7 +23,8 @@ class CorredorType extends AbstractType
             ->add('dni')
             ->add('fechaNacimiento','Symfony\Component\Form\Extension\Core\Type\DateTimeType', array(
                 'widget' => 'single_text',
-                'html5' => false,))
+                'html5' => false,
+                'years' => range(date('Y'), date('Y')-100)))
             ->add('email')
             ->add('telefono')
             ->add('telEmergencia')

@@ -5,6 +5,8 @@
     <link href="{{ asset('assets/bootstrap3/js/bootstrap.js') }}"  rel="stylesheet" />
     <script src="{{ asset('assets/js/jquery-1.10.2.js') }}" ></script>
     <link href="{{ asset('assets/css/ct-navbar.css') }}"  rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/icono.png') }}" />
+    <title>{% block title %}Maraton de los dos años{% endblock %}</title>
 
     <script src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script>
 
@@ -26,9 +28,12 @@
                             <hr>
                             <div class="card-content">
                                 {{ form_start(edit_form) }}
+
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
+                                            {{ form_errors(edit_form.nombre) }}
+
                                             <label class="control-label">Nombre</label>
                                             {{ form_widget(edit_form.nombre, { 'attr': {'class':'form-control'}})}}
 
@@ -36,12 +41,15 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
+                                            {{ form_errors(edit_form.apellido) }}
+
                                             <label class="control-label">Apellido</label>
                                             {{ form_widget(edit_form.apellido, { 'attr': {'class':'form-control'}})}}
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
+                                            {{ form_errors(edit_form.dni) }}
                                             <label class="control-label">D.N.I.</label>
                                             {{ form_widget(edit_form.dni, { 'attr': {'class':'form-control'}})}}
                                         </div>
@@ -50,6 +58,7 @@
                                 <div class="row">
                                        <div class="col-md-4">
                                         <div class="form-group label-floating text-center">
+                                            {{ form_errors(edit_form.fechaNacimiento) }}
                                             <label class="control-label">Fecha de nacimiento <span class="text-danger">*</span></label>
                                             {{ form_widget(edit_form.fechaNacimiento, {attr: {
                                                 'class': "datepicker form-control" } ,
@@ -59,12 +68,14 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
+                                            {{ form_errors(edit_form.sexo) }}
                                             <label class="control-label">Sexo</label>
                                             {{ form_widget(edit_form.sexo, { 'attr': {'class':'form-control'}})}}
                                         </div>
                                     </div>
                                        <div class="col-md-4">
                                         <div class="form-group label-floating text-center">
+                                            {{ form_errors(edit_form.rangedate) }}
                                             <label class="control-label">Categoria edad <span class="text-danger">*</span></label>
                                             {{ form_widget(edit_form.rangedate, { 'attr': {'class':'form-control text-center'}})}}
                                         </div>
@@ -73,12 +84,14 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
+                                            {{ form_errors(edit_form.telefono) }}
                                             <label class="control-label">Teléfono</label>
                                             {{ form_widget(edit_form.telefono, { 'attr': {'class':'form-control', }})}}
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
+                                            {{ form_errors(edit_form.telEmergencia) }}
                                             <label class="control-label">Teléfono de emergencia </label>
                                             {{ form_widget(edit_form.telEmergencia, { 'attr': {'class':'form-control'}})}}
                                         </div>
@@ -87,6 +100,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
+                                            {{ form_errors(edit_form.pais) }}
                                             <label class="control-label">País</label>
                                             {{ form_widget(edit_form.pais, { 'attr': {'class':'form-control'}})}}
                                         </div>
@@ -126,6 +140,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
+                                            {{ form_errors(edit_form.ciudad) }}
                                             <label  id="lo" class="control-label">Localidad</label>
                                             {{ form_widget(edit_form.ciudad, { 'attr': {'class':'form-control'}})}}
 
@@ -135,6 +150,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
+                                            {{ form_errors(edit_form.talle) }}
                                             <label class="control-label">Talle</label>
                                             {{ form_widget(edit_form.talle, { 'attr': {'class':'form-control'}})}}
                                         </div>
@@ -142,6 +158,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
+                                            {{ form_errors(edit_form.email) }}
                                             <label class="control-label">Email</label>
                                             {{ form_widget(edit_form.email, { 'attr': {'class':'form-control'}})}}
                                         </div>
@@ -150,19 +167,21 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
+                                            {{ form_errors(edit_form.tipocarrera) }}
                                             <label class="control-label">¿Posee alguna discapacidad?</label>
                                             {{ form_widget(edit_form.tipocarrera, { 'attr': {'class':'form-control'}})}}
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
-
+                                            {{ form_errors(edit_form.distancia) }}
                                             <label class="control-label">Distancia</label>
                                             {{ form_widget(edit_form.distancia, { 'attr': {'class':'form-control'}})}}
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
+                                            {{ form_errors(edit_form.formapago) }}
                                             <label class="control-label">Forma de pago</label>
                                             {{ form_widget(edit_form.formapago, { 'attr': {'class':'form-control', onchange:'calle()'}})}}
                                         </div>
@@ -180,7 +199,11 @@
                                     </div>
                                     {% endif %}
 
-                                    <div class="">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <a  class="btn btn-primary col-md-6 pull-left" href="{{ path('homepage') }}">Volver al menu</a>
+
+                                        </div>
 
                                         <input  class="btn btn-success col-md-4 pull-right" type="submit" value="Guardar" />
 
