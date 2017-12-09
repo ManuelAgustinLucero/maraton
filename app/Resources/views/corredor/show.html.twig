@@ -123,24 +123,24 @@
                             <div class="row">
                                 {% if is_granted('ROLE_ADMIN') %}
 
-                                <div class="col-md-4">
-                                    <a class="btn btn-primary col-md-8 pull-left" href="{{ path('corredor_index') }}">Volver a la lista</a>
+                                    <div class="col-md-12">
+                                        <a class="btn btn-primary col-md-2 href="{{ path('corredor_index') }}">Volver a la lista</a>
 
-                                </div>
-                                <div class="col-md-4">
-                                    {{ form_start(delete_form) }}
-                                    <input class="btn btn-danger col-md-6 col-sm-offset-3" type="submit" value="Delete">
-                                    {{ form_end(delete_form) }}
+                                        {{ form_start(delete_form) }}
+                                        <input class="btn btn-danger col-md-2 col-md-offset-3" type="submit" value="Delete">
+                                        {{ form_end(delete_form) }}
 
-                                </div>
+                                        <a class="btn btn-info col-md-2 col-md-offset-3" href="{{ path('corredor_edit', { 'id': corredor.id }) }}">Editar</a>
+
+                                    </div>
+
                                 {% endif %}
 
-                                <div class="">
-                                    <a class="btn btn-primary col-md-3 pull-right " href="{{ path('corredor_edit', { 'id': corredor.id }) }}">Editar</a>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <a class="btn btn-success col-md-3 pull-right " onclick="imprSelec('hola')">Imprimir</a>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br>
+                                        <a class="btn btn-success col-md-2 col-md-offset-10" onclick="imprSelec('hola')">Imprimir</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
