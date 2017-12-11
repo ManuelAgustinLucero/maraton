@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 
+
+
 class CorredorType extends AbstractType
 {
     /**
@@ -21,10 +23,14 @@ class CorredorType extends AbstractType
         $builder->add('nombre')
             ->add('apellido')
             ->add('dni')
-            ->add('fechaNacimiento','Symfony\Component\Form\Extension\Core\Type\DateTimeType', array(
+            ->add('fechaNacimiento','Symfony\Component\Form\Extension\Core\Type\BirthdayType', array(
+                'placeholder' => array(
+                    'day' => 'Dia','month' => 'Mes', 'year' => 'Año',
+
+                ),
                 'widget' => 'single_text',
-                'html5' => false,
-                'years' => range(date('Y'), date('Y')-100)))
+                'format' => 'dd-MM-yyyy'
+                ))
             ->add('email')
             ->add('telefono')
             ->add('telEmergencia')
