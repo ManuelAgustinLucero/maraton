@@ -12,216 +12,230 @@
 
 {% endblock %}
 {% block body %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="wrapper ">
+            <div class="content">
+                <div class="section section-features">
+                    <div class="">
+                        <div class="col-md-8 col-sm-offset-2">
 
-    <div class="wrapper ">
-        <div class="content">
-            <div class="section section-features">
-                <div class="">
-                    <div class="col-md-8 col-sm-offset-2">
-
-                        <div class="card card-blue" >
-                            <div class="card-header" data-background-color="purple">
-                                <h6 class="title text-center">Registro de corredor</h6>
-                                <h6 class="category text-center">Complete los campos obligatorios</h6>
-                            </div>
-                            <br>
-                            <hr>
-                            <div class="card-content">
-                                {{ form_start(edit_form) }}
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group label-floating">
-                                            {{ form_errors(edit_form.nombre) }}
-
-                                            <label class="control-label">Nombre</label>
-                                            {{ form_widget(edit_form.nombre, { 'attr': {'class':'form-control'}})}}
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group label-floating">
-                                            {{ form_errors(edit_form.apellido) }}
-
-                                            <label class="control-label">Apellido</label>
-                                            {{ form_widget(edit_form.apellido, { 'attr': {'class':'form-control'}})}}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group label-floating">
-                                            {{ form_errors(edit_form.dni) }}
-                                            <label class="control-label">D.N.I.</label>
-                                            {{ form_widget(edit_form.dni, { 'attr': {'class':'form-control'}})}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                       <div class="col-md-4">
-                                        <div class="form-group label-floating text-center">
-                                            {{ form_errors(edit_form.fechaNacimiento) }}
-                                            <label class="control-label">Fecha de nacimiento <span class="text-danger">*</span></label>
-                                            {{ form_widget(edit_form.fechaNacimiento, {attr: {
-                                                'class': "datepicker form-control" } ,
-                                            })
-                                            }}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group label-floating">
-                                            {{ form_errors(edit_form.sexo) }}
-                                            <label class="control-label">Sexo</label>
-                                            {{ form_widget(edit_form.sexo, { 'attr': {'class':'form-control'}})}}
-                                        </div>
-                                    </div>
-                                       <div class="col-md-4">
-                                        <div class="form-group label-floating text-center">
-                                            {{ form_errors(edit_form.rangedate) }}
-                                            <label class="control-label">Categoria edad <span class="text-danger">*</span></label>
-                                            {{ form_widget(edit_form.rangedate, { 'attr': {'class':'form-control text-center'}})}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group label-floating">
-                                            {{ form_errors(edit_form.telefono) }}
-                                            <label class="control-label">Teléfono</label>
-                                            {{ form_widget(edit_form.telefono, { 'attr': {'class':'form-control', }})}}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group label-floating">
-                                            {{ form_errors(edit_form.telEmergencia) }}
-                                            <label class="control-label">Teléfono de emergencia </label>
-                                            {{ form_widget(edit_form.telEmergencia, { 'attr': {'class':'form-control'}})}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group label-floating">
-                                            {{ form_errors(edit_form.pais) }}
-                                            <label class="control-label">País</label>
-                                            {{ form_widget(edit_form.pais, { 'attr': {'class':'form-control'}})}}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group label-floating">
-                                            <label id="pro" class="control-label">Provincia</label>
-                                            <select name="provincia" id="appbundle_corredor_provincia" class="form-control">
-                                                <option value></option>
-                                                <option value="6">Córdoba</option>
-                                                <option value="2">Capital Federal</option>
-                                                <option value="3">Catamarca</option>
-                                                <option value="4">Chaco</option>
-                                                <option value="5">Chubut</option>
-                                                <option value="1">Buenos Aires</option>
-                                                <option value="7">Corrientes</option>
-                                                <option value="8">Entre Rios</option>
-                                                <option value="9">Formosa</option>
-                                                <option value="10">Jujuy</option>
-                                                <option value="11">La Pampa</option>
-                                                <option value="12">La Rioja</option>
-                                                <option value="13">Mendoza</option>
-                                                <option value="14">Misiones</option>
-                                                <option value="15">Neuquen</option>
-                                                <option value="16">Rio Negro</option>
-                                                <option value="17">Salta</option>
-                                                <option value="18">San Juan</option>
-                                                <option value="19">San Luis</option>
-                                                <option value="20">Santa Cruz</option>
-                                                <option value="21">Santa Fe</option>
-                                                <option value="22">Santiago Del Estero</option>
-                                                <option value="23">Tierra del Fuego</option>
-                                                <option value="24">Tucuman</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group label-floating">
-                                            {{ form_errors(edit_form.ciudad) }}
-                                            <label  id="lo" class="control-label">Localidad</label>
-                                            {{ form_widget(edit_form.ciudad, { 'attr': {'class':'form-control'}})}}
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group label-floating">
-                                            {{ form_errors(edit_form.talle) }}
-                                            <label class="control-label">Talle</label>
-                                            {{ form_widget(edit_form.talle, { 'attr': {'class':'form-control'}})}}
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group label-floating">
-                                            {{ form_errors(edit_form.email) }}
-                                            <label class="control-label">Email</label>
-                                            {{ form_widget(edit_form.email, { 'attr': {'class':'form-control'}})}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group label-floating">
-                                            {{ form_errors(edit_form.tipocarrera) }}
-                                            <label class="control-label">¿Posee alguna discapacidad?</label>
-                                            {{ form_widget(edit_form.tipocarrera, { 'attr': {'class':'form-control'}})}}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group label-floating">
-                                            {{ form_errors(edit_form.distancia) }}
-                                            <label class="control-label">Distancia</label>
-                                            {{ form_widget(edit_form.distancia, { 'attr': {'class':'form-control'}})}}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group label-floating">
-                                            {{ form_errors(edit_form.formapago) }}
-                                            <label class="control-label">Forma de pago</label>
-                                            {{ form_widget(edit_form.formapago, { 'attr': {'class':'form-control', onchange:'calle()'}})}}
-                                        </div>
-                                    </div>
+                            <div class="card card-blue" >
+                                <div class="card-header" data-background-color="purple">
+                                    <h6 class="title text-center">Registro de corredor</h6>
+                                    <h6 class="category text-center">Complete los campos obligatorios</h6>
                                 </div>
                                 <br>
                                 <hr>
-                                <div class="row">
-                                    {% if is_granted('ROLE_ADMIN') %}
-
-                                    <div class="col-md-6">
-                                        <a  class="btn btn-primary col-md-6 pull-left"href="{{ path('corredor_index') }}">Volver a la lista</a>
-
-
-                                    </div>
-                                    {% endif %}
+                                <div class="card-content">
+                                    {{ form_start(edit_form) }}
 
                                     <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                {{ form_errors(edit_form.nombre) }}
+
+                                                <label class="control-label">Nombre</label>
+                                                {{ form_widget(edit_form.nombre, { 'attr': {'class':'form-control'}})}}
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                {{ form_errors(edit_form.apellido) }}
+
+                                                <label class="control-label">Apellido</label>
+                                                {{ form_widget(edit_form.apellido, { 'attr': {'class':'form-control'}})}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                {{ form_errors(edit_form.dni) }}
+                                                <label class="control-label">D.N.I.</label>
+                                                {{ form_widget(edit_form.dni, { 'attr': {'class':'form-control'}})}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating text-center">
+                                                {{ form_errors(edit_form.fechaNacimiento) }}
+                                                <label class="control-label">Fecha de nacimiento <span class="text-danger">*</span></label>
+                                                {{ form_widget(edit_form.fechaNacimiento, {attr: {
+                                                    'class': "datepicker form-control" } ,
+                                                })
+                                                }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                {{ form_errors(edit_form.sexo) }}
+                                                <label class="control-label">Sexo</label>
+                                                {{ form_widget(edit_form.sexo, { 'attr': {'class':'form-control'}})}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating text-center">
+                                                {{ form_errors(edit_form.rangedate) }}
+                                                <label class="control-label">Categoria edad <span class="text-danger">*</span></label>
+                                                {{ form_widget(edit_form.rangedate, { 'attr': {'class':'form-control text-center'}})}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-6">
-                                            <a  class="btn btn-primary col-md-6 pull-left" href="{{ path('homepage') }}">Volver al menu</a>
+                                            <div class="form-group label-floating">
+                                                {{ form_errors(edit_form.telefono) }}
+                                                <label class="control-label">Teléfono</label>
+                                                {{ form_widget(edit_form.telefono, { 'attr': {'class':'form-control', }})}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                {{ form_errors(edit_form.telEmergencia) }}
+                                                <label class="control-label">Teléfono de emergencia </label>
+                                                {{ form_widget(edit_form.telEmergencia, { 'attr': {'class':'form-control'}})}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                {{ form_errors(edit_form.pais) }}
+                                                <label class="control-label">País</label>
+                                                {{ form_widget(edit_form.pais, { 'attr': {'class':'form-control'}})}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                <label id="pro" class="control-label">Provincia</label>
+                                                <select name="provincia" id="appbundle_corredor_provincia" class="form-control">
+                                                    <option value></option>
+                                                    <option value="6">Córdoba</option>
+                                                    <option value="2">Capital Federal</option>
+                                                    <option value="3">Catamarca</option>
+                                                    <option value="4">Chaco</option>
+                                                    <option value="5">Chubut</option>
+                                                    <option value="1">Buenos Aires</option>
+                                                    <option value="7">Corrientes</option>
+                                                    <option value="8">Entre Rios</option>
+                                                    <option value="9">Formosa</option>
+                                                    <option value="10">Jujuy</option>
+                                                    <option value="11">La Pampa</option>
+                                                    <option value="12">La Rioja</option>
+                                                    <option value="13">Mendoza</option>
+                                                    <option value="14">Misiones</option>
+                                                    <option value="15">Neuquen</option>
+                                                    <option value="16">Rio Negro</option>
+                                                    <option value="17">Salta</option>
+                                                    <option value="18">San Juan</option>
+                                                    <option value="19">San Luis</option>
+                                                    <option value="20">Santa Cruz</option>
+                                                    <option value="21">Santa Fe</option>
+                                                    <option value="22">Santiago Del Estero</option>
+                                                    <option value="23">Tierra del Fuego</option>
+                                                    <option value="24">Tucuman</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                {{ form_errors(edit_form.ciudad) }}
+                                                <label  id="lo" class="control-label">Localidad</label>
+                                                {{ form_widget(edit_form.ciudad, { 'attr': {'class':'form-control'}})}}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                {{ form_errors(edit_form.talle) }}
+                                                <label class="control-label">Talle</label>
+                                                {{ form_widget(edit_form.talle, { 'attr': {'class':'form-control'}})}}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                {{ form_errors(edit_form.email) }}
+                                                <label class="control-label">Email</label>
+                                                {{ form_widget(edit_form.email, { 'attr': {'class':'form-control'}})}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                {{ form_errors(edit_form.tipocarrera) }}
+                                                <label class="control-label">¿Posee alguna discapacidad?</label>
+                                                {{ form_widget(edit_form.tipocarrera, { 'attr': {'class':'form-control'}})}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                {{ form_errors(edit_form.distancia) }}
+                                                <label class="control-label">Distancia</label>
+                                                {{ form_widget(edit_form.distancia, { 'attr': {'class':'form-control'}})}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                {{ form_errors(edit_form.formapago) }}
+                                                <label class="control-label">Forma de pago</label>
+                                                {{ form_widget(edit_form.formapago, { 'attr': {'class':'form-control', onchange:'calle()'}})}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <hr>
+                                    <div class="row">
+                                        {% if is_granted('ROLE_ADMIN') %}
+
+                                            <div class="col-md-6">
+                                                <a  class="btn btn-primary col-md-6 pull-left"href="{{ path('corredor_index') }}">Volver a la lista</a>
+
+
+                                            </div>
+                                        {% endif %}
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <a  class="btn btn-primary col-md-6 pull-left" href="{{ path('homepage') }}">Volver al menu</a>
+
+                                            </div>
+
+                                            <input  class="btn btn-success col-md-4 pull-right" type="submit" value="Guardar" />
 
                                         </div>
 
-                                        <input  class="btn btn-success col-md-4 pull-right" type="submit" value="Guardar" />
-
                                     </div>
 
+
+                                    <div class="clearfix"></div>
+                                    {{ form_end(edit_form) }}
+
                                 </div>
-
-
-                                <div class="clearfix"></div>
-                                {{ form_end(edit_form) }}
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% else %}
+        <div class="row">
+            <br>
+            <br>
+            <div class="col-md-6 col-md-offset-3">
+                <h3 class="text-danger">Usted no tiene permiso para acceder a esta pagina</h3>
+
+                <a  class="btn btn-primary col-md-6 col-md-offset-3" href="{{ path('homepage') }}">Volver al Inicio</a>
+            </div>
+        </div>
+
+    {% endif %}
+
+
 
 
 
@@ -229,29 +243,18 @@
 {% endblock %}
 {% block javascripts %}
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    $('.datepicker').datepicker({
+        $('.datepicker').datepicker({
 
             format: 'dd/mm/yyyy',
             viewMode: 'years',
             minDate: 0
 
-    });
+        });
 
 
-    $(document).ready(function ( ) {
-        if (pais != 13){
-            document.getElementById('appbundle_corredor_provincia').disabled=true;
-            document.getElementById('appbundle_corredor_ciudad').disabled=true;
-        }
-        else{
-            document.getElementById('appbundle_corredor_provincia').disabled=false;
-        }
-
-        $('#appbundle_corredor_pais').change(function () {
-            var pais=$('#appbundle_corredor_pais option:selected').val();
-
+        $(document).ready(function ( ) {
             if (pais != 13){
                 document.getElementById('appbundle_corredor_provincia').disabled=true;
                 document.getElementById('appbundle_corredor_ciudad').disabled=true;
@@ -259,37 +262,48 @@
             else{
                 document.getElementById('appbundle_corredor_provincia').disabled=false;
             }
-        })
-    });
 
-    $(document).ready(function ( ) {
-        $('#appbundle_corredor_provincia').change(function () {
-            var selectedoption=$('#appbundle_corredor_provincia option:selected').val();
-            console.log(selectedoption);
-            $.ajax({
-                type: "POST",
-                url: "{{ path ("seleccion_provincia") }}",
-                data: { option: selectedoption}
-            }).done(function (data){
-                var json_string = JSON.stringify(data);
-                var obj = $.parseJSON(json_string);
-                var list = $('.corredor_ciudad');
-                list.empty();
+            $('#appbundle_corredor_pais').change(function () {
+                var pais=$('#appbundle_corredor_pais option:selected').val();
 
-                html = "";
-                for(var key in obj) {
-                    html += "<option value=" + obj[key].id + ">" +obj[key].nombre + "</option>"
+                if (pais != 13){
+                    document.getElementById('appbundle_corredor_provincia').disabled=true;
+                    document.getElementById('appbundle_corredor_ciudad').disabled=true;
                 }
-                document.getElementById('appbundle_corredor_ciudad').disabled=false;
-                document.getElementById("appbundle_corredor_ciudad").innerHTML = html;
-            });
+                else{
+                    document.getElementById('appbundle_corredor_provincia').disabled=false;
+                }
+            })
+        });
 
-        })
-    });
+        $(document).ready(function ( ) {
+            $('#appbundle_corredor_provincia').change(function () {
+                var selectedoption=$('#appbundle_corredor_provincia option:selected').val();
+                console.log(selectedoption);
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path ("seleccion_provincia") }}",
+                    data: { option: selectedoption}
+                }).done(function (data){
+                    var json_string = JSON.stringify(data);
+                    var obj = $.parseJSON(json_string);
+                    var list = $('.corredor_ciudad');
+                    list.empty();
+
+                    html = "";
+                    for(var key in obj) {
+                        html += "<option value=" + obj[key].id + ">" +obj[key].nombre + "</option>"
+                    }
+                    document.getElementById('appbundle_corredor_ciudad').disabled=false;
+                    document.getElementById("appbundle_corredor_ciudad").innerHTML = html;
+                });
+
+            })
+        });
 
 
 
 
 
-</script>
+    </script>
 {% endblock %}
