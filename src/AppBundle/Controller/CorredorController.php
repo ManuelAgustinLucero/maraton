@@ -46,7 +46,12 @@ class CorredorController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $form = $this->createForm('AppBundle\Form\CorredorType', $corredor);
-        $form->get('formapago')->setData($em->getReference('AppBundle:FormaPago', 2));
+        if (!$this->getUser()){
+            $form->get('formapago')->setData($em->getReference('AppBundle:FormaPago', 2));
+        }
+        else{
+            $form->get('formapago')->setData($em->getReference('AppBundle:FormaPago', 1));
+        }
         $form->get('tipocarrera')->setData($em->getReference('AppBundle:TipoCarrera', 1));
 
         $form->handleRequest($request);
