@@ -1,145 +1,150 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="wrapper ">
-    <div class="content">
-        <div class="section section-features">
-            <div class="">
-                <div class="col-md-8 col-sm-offset-2">
+    <div class="wrapper ">
+        <div class="content">
+            <div class="section section-features">
+                <div class="">
+                    <div class="col-md-8 col-sm-offset-2">
 
-                    <div class="card card-blue" >
-                        <div class="card-header" data-background-color="purple" id="hola2">
-                            <h5 class="title text-center">Corredor</h5>
+                        <div class="card card-blue" >
+                            <div class="card-header" data-background-color="purple" id="hola2">
+                                <h5 class="title text-center">Corredor</h5>
 
-                        </div>
+                            </div>
 
-                        <div class="card-content">
-                        <div id="hola">
-                        <table class="table text-left">
-                            <h6 class="category text-center">Comprobante para el corredor</h6>
+                            <div class="card-content">
+                                <div id="hola">
+                                    <table class="table text-left">
+                                        <h6 class="category text-center">Comprobante para el corredor</h6>
 
-                            <tbody>
+                                        <tbody>
+                                        <tr>
+                                            <th class="text-left">Número de Kit</th>
+                                            <td>{{ corredor.id }}</td>
+                                        </tr>
 
-                                <tr>
-                                    <th class="text-left">Nombre</th>
-                                    <td>{{ corredor.nombre }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Apellido</th>
-                                    <td>{{ corredor.apellido }}</td>
-                                </tr>
-                                <tr>
-                                    <th>D.N.I.</th>
-                                    <td>{{ corredor.dni }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Fecha de nacimiento</th>
-                                    <td>{% if corredor.fechaNacimiento %}{{ corredor.fechaNacimiento|date('d-m-Y') }}{% endif %}</td>
-                                </tr>
-                                <tr>
-                                    <th>Email</th>
-                                    <td>{{ corredor.email }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Teléfono</th>
-                                    <td>{{ corredor.telefono }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Teléfono de emergencia</th>
-                                    <td>{{ corredor.telEmergencia }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Sexo</th>
-                                    <td>{{ corredor.sexo}}</td>
-                                </tr>
-                                <tr>
-                                    <th>País</th>
-                                    <td>{{ corredor.pais}}</td>
-                                </tr>
-                                 {% if  (corredor.ciudad.provincia.nombre is defined) %}
-                                    <tr>
-                                        <th>Provincia</th>
-                                        
-                                        <td>{{ corredor.ciudad.provincia.nombre}}</td>
-                                    </tr>
-                                {%endif%}
-                                {% if  (corredor.ciudad is defined) %}
+                                        <tr>
+                                            <th class="text-left">Nombre</th>
+                                            <td>{{ corredor.nombre }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Apellido</th>
+                                            <td>{{ corredor.apellido }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>D.N.I.</th>
+                                            <td>{{ corredor.dni }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fecha de nacimiento</th>
+                                            <td>{% if corredor.fechaNacimiento %}{{ corredor.fechaNacimiento|date('d-m-Y') }}{% endif %}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Email</th>
+                                            <td>{{ corredor.email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Teléfono</th>
+                                            <td>{{ corredor.telefono }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Teléfono de emergencia</th>
+                                            <td>{{ corredor.telEmergencia }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Sexo</th>
+                                            <td>{{ corredor.sexo}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>País</th>
+                                            <td>{{ corredor.pais}}</td>
+                                        </tr>
+                                        {% if  (corredor.ciudad.provincia.nombre is defined) %}
+                                            <tr>
+                                                <th>Provincia</th>
 
-                                <tr>
-                                    <th>Ciudad</th>
-                                    <td>{{ corredor.ciudad}}</td>
-                                </tr>
-                                 {%endif%}
+                                                <td>{{ corredor.ciudad.provincia.nombre}}</td>
+                                            </tr>
+                                        {%endif%}
+                                        {% if  (corredor.ciudad is defined) %}
 
-                                <hr>
-                                <tr>
-                                    <th>Talle</th>
-                                    <td>{{ corredor.talle}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Discapacidad</th>
-                                    <td>{{ corredor.tipocarrera}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Distancia</th>
-                                    <td>{{ corredor.distancia}} Km</td>
-                                </tr>
-                                <tr>
-                                    <th>Forma de Pago</th>
-                                    <td>{{ corredor.formapago}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                            <hr>
-                        <p>
-                            {% if (corredor.formapago == 'Cuenta Corriente') %}
-                                <h4>En CES</h4>
-                                <br>
-                                Gral Paz 767, Río Cuarto, Córdoba
-                                <br>
-                                Número de Cuenta: <strong>559</strong>
-                            {% endif %}
-                            {% if (corredor.formapago == 'Depósito Bancario') %}
-                                <h4>En Banco Macro</h4>
-                                <br>
-                                Cuenta corriente en pesos
-                                <br>
-                                Número de Cuenta: <strong>382109415914272</strong>
-                                <br>
-                                CBU Nº: <strong>2850821230094159142721</strong>
-                            {% endif %}
-                            {% if (corredor.distancia == '5') %}
-                                <br>
-                                Monto a pagar $400
-                            {% endif %}
-                            {% if (corredor.distancia == '10') %}
-                                <br>
-                                Monto a pagar $500
-                            {% endif %}
+                                            <tr>
+                                                <th>Ciudad</th>
+                                                <td>{{ corredor.ciudad}}</td>
+                                            </tr>
+                                        {%endif%}
 
-                            </p>
-                        </div>
-                            <br><br>
-                            <div class="row">
-                                {% if is_granted('ROLE_ADMIN') %}
-
-                                    <div class="col-md-12">
-                                        <a class="btn btn-primary col-md-2 href="{{ path('corredor_index') }}">Volver a la lista</a>
-
-                                        {{ form_start(delete_form) }}
-                                        <input class="btn btn-danger col-md-2 col-md-offset-3" type="submit" value="Delete">
-                                        {{ form_end(delete_form) }}
-
-                                        <a class="btn btn-info col-md-2 col-md-offset-3" href="{{ path('corredor_edit', { 'id': corredor.id }) }}">Editar</a>
-
-                                    </div>
-
-                                {% endif %}
-
-                                <div class="row">
-                                    <div class="col-md-12">
+                                        <hr>
+                                        <tr>
+                                            <th>Talle</th>
+                                            <td>{{ corredor.talle}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Discapacidad</th>
+                                            <td>{{ corredor.tipocarrera}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Distancia</th>
+                                            <td>{{ corredor.distancia}} Km</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Forma de Pago</th>
+                                            <td>{{ corredor.formapago}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <hr>
+                                    <p>
+                                        {% if (corredor.formapago == 'Cuenta Corriente') %}
+                                    <h4>En CES</h4>
+                                    <br>
+                                    Gral Paz 767, Río Cuarto, Córdoba
+                                    <br>
+                                    Número de Cuenta: <strong>559</strong>
+                                    {% endif %}
+                                    {% if (corredor.formapago == 'Depósito Bancario') %}
+                                        <h4>En Banco Macro</h4>
                                         <br>
-                                        <a class="btn btn-success col-md-2 col-md-offset-10" onclick="imprSelec('hola')">Imprimir</a>
+                                        Cuenta corriente en pesos
+                                        <br>
+                                        Número de Cuenta: <strong>382109415914272</strong>
+                                        <br>
+                                        CBU Nº: <strong>2850821230094159142721</strong>
+                                    {% endif %}
+                                    {% if (corredor.distancia == '5') %}
+                                        <br>
+                                        Monto a pagar $400
+                                    {% endif %}
+                                    {% if (corredor.distancia == '10') %}
+                                        <br>
+                                        Monto a pagar $500
+                                    {% endif %}
+
+                                    </p>
+                                </div>
+                                <br><br>
+                                <div class="row">
+                                    {% if is_granted('ROLE_ADMIN') %}
+
+                                        <div class="col-md-12">
+                                            <a class="btn btn-primary col-md-2 href="{{ path('corredor_index') }}">Volver a la lista</a>
+
+                                            {{ form_start(delete_form) }}
+                                            <input class="btn btn-danger col-md-2 col-md-offset-3" type="submit" value="Delete">
+                                            {{ form_end(delete_form) }}
+
+                                            <a class="btn btn-info col-md-2 col-md-offset-3" href="{{ path('corredor_edit', { 'id': corredor.id }) }}">Editar</a>
+
+                                        </div>
+
+                                    {% endif %}
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <br>
+                                            <a class="btn btn-success col-md-2 col-md-offset-10" onclick="imprSelec('hola')">Imprimir</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +154,6 @@
             </div>
         </div>
     </div>
-</div>
     <br>
     <br>
 
