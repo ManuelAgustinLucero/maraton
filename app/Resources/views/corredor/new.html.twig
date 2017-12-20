@@ -197,9 +197,23 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
-                                            {{ form_errors(form.formapago) }}
+                                            <div style="display: none" >
+                                                {{ form_row(form.formapago) }}
+                                            </div>
                                             <label class="control-label">Forma de pago<span class="text-danger">*</span></label>
-                                            {{ form_widget(form.formapago,{ 'attr': {'class':'form-control'}})}}
+                                            <select id="select_formadepago" class="form-control" name="country"data-width="100%">
+
+                                                {% for choice in form.formapago.vars.choices %}
+                                                    {% if choice.value == 1 and is_granted('ROLE_ADMIN') %}
+
+                                                        <option  class="form-control" value=" {{ choice.value }}"> {{ choice.label }} </option>
+                                                    {% elseif choice.value != 1 %}
+                                                        <option class="form-control" value=" {{ choice.value }}"> {{ choice.label }} </option>
+
+                                                    {% endif %}
+
+                                                {% endfor %}
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -229,6 +243,27 @@
 {% block javascripts %}
 
     <script type="text/javascript">
+
+
+        $(document).ready(function ( ) {
+            $('#select_formadepago').change(function () {
+                var a=$('#select_formadepago option:selected').val().toString();
+                var b=$('#select_formadepago option:selected').text().toString();
+
+                var va =a.toString();
+                $("#appbundle_corredor_formapago").val(a);
+                html = "";
+
+                html += "<option value=" + a + ">" +b + "</option>";
+
+
+                document.getElementById("appbundle_corredor_formapago").innerHTML = html;
+
+                //document.ready = document.getElementById("appbundle_corredor_formapago").val = a;
+
+            })
+        });
+
         $('.datepicker').datepicker({
 
             format: 'dd/mm/yyyy',
